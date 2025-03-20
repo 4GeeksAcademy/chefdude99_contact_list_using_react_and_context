@@ -39,40 +39,40 @@ export const NewContact = () => {
                 headers: { "Content-Type": "application/json" }
             }
         )
-        .then((response)=> {
-            console.log(response)
-            
-        })
+            .then((response) => {
+                console.log(response)
+
+            })
     }
     return (
         <div className="container">
+            <h1 className="text-center">Agrega un nuevo Contacto</h1>
+            <br />
             {name.length > 0 && name}
             <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">Nombre completo</label>
                 <input onChange={handleName}
-                    type="email" className="form-control" id="exampleFormControlInput1" placeholder=""></input>
+                    type="email" className="form-control" id="exampleFormControlInput1" placeholder="Nombre completo"></input>
             </div>
             <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">Direccion de Correo</label>
                 <input onChange={handleEmail}
-                    type="email" className="form-control" id="exampleFormControlInput1" placeholder=""></input>
+                    type="email" className="form-control" id="exampleFormControlInput1" placeholder="Correo"></input>
             </div>
             <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">Telefono</label>
                 <input onChange={handleNumber}
-                    type="email" className="form-control" id="exampleFormControlInput1" placeholder=""></input>
+                    type="email" className="form-control" id="exampleFormControlInput1" placeholder="Numero"></input>
             </div>
             <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">Direccion local</label>
                 <input onChange={handleAddress}
-                    type="email" className="form-control" id="exampleFormControlInput1" placeholder=""></input>
+                    type="email" className="form-control" id="exampleFormControlInput1" placeholder="Direccion"></input>
             </div>
-            <div className="btn btn-success"
+            <div className="d-grid gap-2 btn btn-success mt-2"
                 onClick={saveContact}>
                 Guardar
             </div>
-            <br />
-            <br />
             <a className="volver-atras" href="">
                 vuelve a los contactos
             </a>
