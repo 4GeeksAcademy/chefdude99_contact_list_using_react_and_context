@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export const NewContact = () => {
+
+export const EditContact = () => {
 
     const navigate = useNavigate();
     const [guardar, setGuardar] = useState("");

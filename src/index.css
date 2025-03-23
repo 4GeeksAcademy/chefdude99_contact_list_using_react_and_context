@@ -1,4 +1,10 @@
-*{
+* {
     background-color: rgb(102, 15, 15);
     color: white;
+}
+
+.contenido{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
 }
