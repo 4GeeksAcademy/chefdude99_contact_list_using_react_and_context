@@ -2,8 +2,21 @@
     color:black;
 }
 
-.contenido{
+.carta-contacto{
+    background-color: rgb(190, 211, 194);
+}
+
+.contenido-carta{
+    padding-top: 40px;
+    width: 200px;
+}
+
+.botones{
     display: flex;
-    justify-content: space-between;
-    align-items: end;
+    justify-content: end;
+    width: 100px;
+}
+
+.boton-editar{
+    margin-right: 5px;
 }
