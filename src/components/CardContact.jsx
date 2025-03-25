@@ -4,16 +4,7 @@ import { useNavigate } from 'react-router-dom'
 const CardContact = ({ contact }) => {
     const navigate = useNavigate()
 
-// const BorrarContacto = (id) => {
-//     fetch(`${apiUrl}/agendas/${userAgenda}/contacts/${id}`, { method: "DELETE"})
-//     .then((response) => {
-//         if (!response.ok) {
-//             throw new Error("Error eliminando")
-//         }
-//         dispatch({ type: "delete_contact", payload: id })
-//     })
-//     .catch(error => console.error("Error eliminando el contacto", error))
-}
+
     return (
         <div className="container card mb-3" style={{
             maxWidth: "800px"
@@ -32,6 +23,8 @@ const CardContact = ({ contact }) => {
                             <button onClick={() => {
                                 navigate(`/edit-contact/${contact.id}`)
                             }}><i className="fa-solid fa-pencil"></i></button>
+                            {/* <button><i className="fa-solid fa-trash-can"></i>
+                            </button> */}
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i className="fa-solid fa-trash-can"></i>
                             </button>
@@ -48,8 +41,7 @@ const CardContact = ({ contact }) => {
                                         </div>
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                            <button type="button" className="btn btn-primary"
-                                            onClick={BorrarContacto}>Eliminar</button>
+                                            <button type="button" className="btn btn-primary">Eliminar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -60,6 +52,6 @@ const CardContact = ({ contact }) => {
             </div>
         </div>
     )
-
+}
 
 export default CardContact
