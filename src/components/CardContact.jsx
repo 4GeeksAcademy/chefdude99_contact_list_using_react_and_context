@@ -3,6 +3,17 @@ import { useNavigate } from 'react-router-dom'
 
 const CardContact = ({ contact }) => {
     const navigate = useNavigate()
+
+// const BorrarContacto = (id) => {
+//     fetch(`${apiUrl}/agendas/${userAgenda}/contacts/${id}`, { method: "DELETE"})
+//     .then((response) => {
+//         if (!response.ok) {
+//             throw new Error("Error eliminando")
+//         }
+//         dispatch({ type: "delete_contact", payload: id })
+//     })
+//     .catch(error => console.error("Error eliminando el contacto", error))
+}
     return (
         <div className="container card mb-3" style={{
             maxWidth: "800px"
@@ -19,15 +30,36 @@ const CardContact = ({ contact }) => {
                         <p className="card-text">{contact.address}</p>
                         <div>
                             <button onClick={() => {
-                                navigate("/new-contact")
+                                navigate(`/edit-contact/${contact.id}`)
                             }}><i className="fa-solid fa-pencil"></i></button>
-                            <button><i className="fa-solid fa-trash-can"></i></button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i className="fa-solid fa-trash-can"></i>
+                            </button>
+
+                            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div className="modal-dialog">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <h1 className="modal-title fs-5" id="exampleModalLabel">Estas seguro ?</h1>
+                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div className="modal-body">
+                                            Si borras este contacto no podras recuperarlo jamas ni nunca !!!
+                                        </div>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="button" className="btn btn-primary"
+                                            onClick={BorrarContacto}>Eliminar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     )
-}
+
 
 export default CardContact

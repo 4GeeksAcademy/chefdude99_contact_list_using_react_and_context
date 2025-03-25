@@ -9,22 +9,21 @@ export const Home = () => {
 	useEffect(() => {
 		fetch("https://playground.4geeks.com/contact/agendas/chefdude99/contacts")
 			.then((response) => response.json())
-			.then((data) => dispatch({ type: "set_contactos", payload: data.contacts }))
+			.then((data) =>  dispatch({ type: "set_contactos", payload: data.contacts }))
 			.catch((error) => console.log(error))
 	}, [])
 
 	const navigate = useNavigate();
 
 	return (
-		<div className="text-start mt-5">
+		<div className="container text-center mt-5">
 			{
 				store.contactos.map((contact, index) => {
 					return (
-						<CardContact contact={contact} />
+						<CardContact contact={contact} key={index}/>
 					)
 				})
 			}
-
 			<button className="btn btn-success"
 				onClick={() => { navigate("/new-contact") }}>
 				Agregar Contacto
