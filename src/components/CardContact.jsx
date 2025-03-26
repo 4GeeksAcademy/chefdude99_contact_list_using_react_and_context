@@ -1,9 +1,41 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const CardContact = ({ contact }) => {
     const navigate = useNavigate()
 
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Estas seguro ?",
+            text: "Si eliminas este contacto, no volvera",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "Cancelar",
+            confirmButtonText: "Eliminar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch("https://playground.4geeks.com/contact/agendas/chefdude99/contacts/" + id, {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" }
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("error al modificar el contacto")
+                        }
+                        navigate("/")
+                    })
+                    .then(() => {
+                        window.location.href = '/'
+                    })
+                    .catch((error) => {
+                        return error
+                    })
+            }
+        });
+    }
 
     return (
         <div className="carta-contacto container card mb-3" style={{
@@ -26,7 +58,8 @@ const CardContact = ({ contact }) => {
                                 navigate(`/edit-contact/${contact.id}`)
                             }}><i className="fa-solid fa-pencil"></i></button>
                         </div>
-                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" className="btn btn-primary"
+                            onClick={() => handleDelete(contact.id)}>
                             <i className="fa-solid fa-trash-can"></i>
                         </button>
                         <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -41,7 +74,8 @@ const CardContact = ({ contact }) => {
                                     </div>
                                     <div className="modal-footer">
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" className="btn btn-primary">Eliminar</button>
+                                        <button type="button" className="btn btn-primary"
+                                            onClick={() => handleDelete(contact.id)}>Eliminar</button>
                                     </div>
                                 </div>
                             </div>
