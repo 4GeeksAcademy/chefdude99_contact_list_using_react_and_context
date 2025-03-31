@@ -37,6 +37,7 @@ export const NewContact = () => {
             <br />
             <h1 className="text-center">Agrega un nuevo Contacto</h1>
             <br />
+            <form>
             <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">Nombre completo</label>
                 <input onChange={(e) => {setNuevoContacto({ ...nuevoContacto, name: e.target.value })}}
@@ -64,6 +65,7 @@ export const NewContact = () => {
 
                     type="email" className="form-control" id="exampleFormControlInput1" placeholder="Direccion"></input>
             </div>
+            </form>
             <div className="d-grid gap-2 btn btn-success mt-2"
                 onClick={() => {enviarContacto()}}>
                 Guardar
