@@ -21,7 +21,7 @@ export const Home = () => {
 			})
 			.then((data) => dispatch({ type: "set_contactos", payload: data.contacts }))
 			.catch((error) => console.log(error))
-	}, [])
+	}, [store.deleteTrigger])
 
 	const navigate = useNavigate();
 

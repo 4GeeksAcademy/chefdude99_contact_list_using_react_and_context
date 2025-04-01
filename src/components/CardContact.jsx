@@ -1,8 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import useGlobalReducer from '../hooks/useGlobalReducer'
 
 const CardContact = ({ contact }) => {
+const { store , dispatch } = useGlobalReducer()
+
     const navigate = useNavigate()
 
     const handleDelete = (id) => {
@@ -25,10 +28,9 @@ const CardContact = ({ contact }) => {
                         if (!response.ok) {
                             throw new Error("error al modificar el contacto")
                         }
-                        return response.json();
-                    })
-                    .then(() => {
-                        window.location.replace = ("/")
+                        dispatch({
+                            type: 'eliminar_contacto',
+                        })
                     })
                     .catch((error) => {
                         console.error("Error:", error);
